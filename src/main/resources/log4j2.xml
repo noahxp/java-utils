@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="tw.noah.utils.log4j2">
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level [%logger{1.}.%t] - %msg%n"/>
+    </Console>
+
+    <SlackAppender name="slack" webhook="https://hooks.slack.com/services/XXXXXXXX/XXXXXXXX/XXXXXXXXXXXX"
+      appName="SlackMainApp"
+      errorChannel="@noahxp"
+      warnChannel="@noahxp"
+      infoChannel="@noahxp"
+      environment="dev"
+      frequency="3"
+    >
+      <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY" />
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level [%logger{1.}.%t] - %msg%n"/>
+    </SlackAppender>
+  </Appenders>
+  <Loggers>
+
+    <Root level="info">
+      <AppenderRef ref="Console"/>
+      <AppenderRef ref="slack"/>
+    </Root>
+  </Loggers>
+</Configuration>
