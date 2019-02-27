@@ -54,9 +54,9 @@ public class SlackManager extends AbstractManager {
   private boolean hasWaitThreads = false; // waiting thread flag
 
 
-  public SlackManager(final Configuration configuration, final LoggerContext loggerContext, final String appenderName, final URL webHook, final String errorChannel,
-      final String warnChannel, final String infoChannel, final String appName, String environment, final int connectTimeoutSeconds, final int frequency, final String proxyUrl,
-      final int proxyPort) {
+  public SlackManager(final Configuration configuration, final LoggerContext loggerContext, final String appenderName, final URL webHook,
+      final String errorChannel, final String warnChannel, final String infoChannel, final String appName, String environment,
+      final int connectTimeoutSeconds, final int frequency, final String proxyUrl, final int proxyPort) {
 
     super(loggerContext, appenderName);
 
@@ -81,6 +81,10 @@ public class SlackManager extends AbstractManager {
 
 
   public void sendMessage(final Layout<?> layout, final LogEvent event) {
+
+    if (event.getLevel() == Level.DEBUG) {
+      System.out.println("errorChannel=" + errorChannel + "\twarnChannel=" + warnChannel + "\tinfoChannel=" + infoChannel);
+    }
 
     String channel;
     color color;
@@ -177,7 +181,8 @@ public class SlackManager extends AbstractManager {
 
         int responseCode = conn.getResponseCode();
         if (responseCode != HttpURLConnection.HTTP_OK) {
-          throw new AppenderLoggingException("Got a non-200 status: " + responseCode + "\nHttp-Body=" + conn.getResponseMessage() + "\nPayload=" + json);
+          throw new AppenderLoggingException(
+              "Got a non-200 status: " + responseCode + "\nHttp-Body=" + conn.getResponseMessage() + "\nPayload=" + json);
 
         }
         conn.disconnect();

@@ -19,7 +19,8 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.Requi
 @Plugin(name = "SlackAppender", category = Core.CATEGORY_NAME, elementType = Appender.ELEMENT_TYPE, printObject = true)
 public class SlackAppender extends AbstractAppender {
 
-  public static class Builder<B extends Builder<B>> extends AbstractAppender.Builder<B> implements org.apache.logging.log4j.core.util.Builder<SlackAppender> {
+  public static class Builder<B extends Builder<B>> extends AbstractAppender.Builder<B> implements
+      org.apache.logging.log4j.core.util.Builder<SlackAppender> {
 
     @PluginBuilderAttribute
     @Required(message = "No webHook provided for SlackAppender")
@@ -57,8 +58,8 @@ public class SlackAppender extends AbstractAppender {
 
     @Override
     public SlackAppender build() {
-      SlackManager slackManager = new SlackManager(getConfiguration(), getConfiguration().getLoggerContext(), getName(), webHook, errorChannel, warnChannel, infoChannel, appName,
-                                                   environment, connectTimeoutSeconds, frequency, proxyUrl, proxyPort);
+      SlackManager slackManager = new SlackManager(getConfiguration(), getConfiguration().getLoggerContext(), getName(), webHook, errorChannel,
+          warnChannel, infoChannel, appName, environment, connectTimeoutSeconds, frequency, proxyUrl, proxyPort);
 
       return new SlackAppender(getName(), getFilter(), getLayout(), slackManager);
     }

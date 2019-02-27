@@ -7,10 +7,8 @@ import lombok.Getter;
 public class Slack {
 
   @AllArgsConstructor
-  public enum color{
-    GOOD("good"),
-    WARNING("warning"),
-    DANGER("danger");
+  public enum color {
+    GOOD("good"), WARNING("warning"), DANGER("danger");
 
     @Getter
     @JsonValue
@@ -19,10 +17,8 @@ public class Slack {
   }
 
   @AllArgsConstructor
-  public enum icon{
-    GOOD(":white_check_mark:"),
-    WARNING(":warning:"),
-    DANGER(":error:");
+  public enum icon {
+    GOOD(":white_check_mark:"), WARNING(":warning:"), DANGER(":error:");
 
     @Getter
     @JsonValue

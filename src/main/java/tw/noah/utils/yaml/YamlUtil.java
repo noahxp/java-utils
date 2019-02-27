@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Properties;
 import org.yaml.snakeyaml.Yaml;
 
-public class YamlUtils {
+public class YamlUtil {
 
   /**
    * @param propMap 結果 properties map 物件
@@ -59,9 +59,11 @@ public class YamlUtils {
 
     if (propsList.size() > 1) { // multi profile, get the whot is active profiles
       String profiles = null;
-      if (System.getProperty("spring.profiles.active") != null && System.getProperty("spring.profiles.active").trim().length() > 0) {  // -Dspring.profiles.active
+      if (System.getProperty("spring.profiles.active") != null
+          && System.getProperty("spring.profiles.active").trim().length() > 0) {  // -Dspring.profiles.active
         profiles = System.getProperty("spring.profiles.active");
-      } else if (System.getenv().get("spring.profiles.active") != null && System.getenv().get("spring.profiles.active").trim().length() > 0) {  // os environment
+      } else if (System.getenv().get("spring.profiles.active") != null
+          && System.getenv().get("spring.profiles.active").trim().length() > 0) {  // os environment
         profiles = System.getenv().get("spring.profiles.active");
       }
       if (profiles != null) {
@@ -82,7 +84,8 @@ public class YamlUtils {
 
     propsList.forEach((p) -> {
       // single yaml doc , main profile , and the active profile
-      if (profileNames.size() == 0 || p.containsKey("spring.profiles.active") || (p.containsKey("spring.profiles") && profileNames.contains(p.get("spring.profiles").toString()))) {
+      if (profileNames.size() == 0 || p.containsKey("spring.profiles.active") || (p.containsKey("spring.profiles") && profileNames
+          .contains(p.get("spring.profiles").toString()))) {
         p.forEach((kk, vv) -> {
           propsRet.setProperty(kk, "" + vv);
         });

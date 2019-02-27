@@ -6,4 +6,5 @@
 ## log4j2 slack appender
 [log4j2 slack appender](log4j2-slack-appender.md)
 
-   
+## email service
+[email service](mail-util.md)

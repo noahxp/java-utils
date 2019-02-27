@@ -10,7 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.util.StringUtils;
-import tw.noah.utils.yaml.YamlUtils;
+import tw.noah.utils.yaml.YamlUtil;
 
 @Plugin(name = "yaml", category = StrLookup.CATEGORY)
 public class YamlEnvironmentLookup extends AbstractLookup {
@@ -39,7 +39,7 @@ public class YamlEnvironmentLookup extends AbstractLookup {
     }
 
     try {
-      props = YamlUtils.yamlToProperties(res.getInputStream());
+      props = YamlUtil.yamlToProperties(res.getInputStream());
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

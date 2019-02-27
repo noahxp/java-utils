@@ -47,7 +47,6 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.+'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.+'
 
-
     // yaml parser
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.+'
 
@@ -58,6 +57,10 @@ dependencies {
 
 
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.+'
+
+
+    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.+'
+
 
 
 
